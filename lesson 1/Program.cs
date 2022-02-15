@@ -66,7 +66,7 @@ namespace lesson_1
                             mamDolaru = mamDolaru + (mojeBassCoin / mapaBassCoinu[i]);
                             mojeBassCoin = 0;
                         }
-                        */
+                        */  
                     }
 
 
