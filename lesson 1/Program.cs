@@ -33,7 +33,7 @@ namespace lesson_1
                 //isNumbric
                 double mamDolaru = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("\nNa učtu mate{0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
+                Console.WriteLine("\nNa učtu mate {0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
                     "\nZa kolik dollaru ma kupovat robot basscoin při snižení cene. " +
                     "\nPozor tato častka musi byt menši než častka co mate na učtu", mamDolaru, mojeBassCoin);
                 //isNubric
@@ -50,14 +50,14 @@ namespace lesson_1
                     "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0.4.");
 
                 //isNumbric a kolem 0:9.
-                double minimalniChranice = int.Parse(Console.ReadLine());
+                double minimalniChranice = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
                     "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0.6." +
                     "\nPozor tato hodnota musi byt vetsi nez " + minimalniChranice);
                 
                 //isNumbric, kolem 0:9 a vetsi nez minimalniChranice.
-                double maximalniChranice = int.Parse(Console.ReadLine());
+                double maximalniChranice = double.Parse(Console.ReadLine());
 
                 
 
@@ -111,7 +111,7 @@ namespace lesson_1
                         }
                         Console.WriteLine("");
                     }
-                    Console.WriteLine("\nNa učtu mate{0} dollaru a {1} BassCoinu. ", mamDolaru, mojeBassCoin);
+                    Console.WriteLine("\nNa učtu mate {0} dollaru a {1} BassCoinu. ", mamDolaru, mojeBassCoin);
 
 
                 }
