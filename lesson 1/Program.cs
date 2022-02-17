@@ -15,10 +15,10 @@ namespace lesson_1
             BassCoin je moje virtualni kripto mena.
             1 bassCoinu = <0.1:0.9> dollaru.
 
-            Formule Kvadratické Mapování Xn+1 = R*Xn *(1 - X n) je velmi dobra formule pro vytvaření houtického grafu.
+            Formule Kvadratické Mapování Xn+1 = R*Xn *(1 - X n) je velmi dobra formule pro vytvaření chaotického grafu.
             logistic map. pokud R bude kolem 3.75 je možny dostat rondomny čisla.
             */
-
+            //isNumbeic
             double bassKoint_soucastnaCena = 0.5; //X=<0:1>  
             double R = 3.75; //MESICNI KOFICENT
             double mojeBassCoin = 0;
@@ -33,7 +33,7 @@ namespace lesson_1
                 //isNumbric
                 double mamDolaru = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("\nNa učtu mate{0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
+                Console.WriteLine("\nNa učtu mate {0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
                     "\nZa kolik dollaru ma kupovat robot basscoin při snižení cene. " +
                     "\nPozor tato častka musi byt menši než častka co mate na učtu", mamDolaru, mojeBassCoin);
                 //isNubric
@@ -47,17 +47,17 @@ namespace lesson_1
                 //isNubric
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
-                    "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0.4.");
+                    "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,4.");
 
                 //isNumbric a kolem 0:9.
-                double minimalniChranice = int.Parse(Console.ReadLine());
+                double minimalniChranice = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
-                    "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0.6." +
+                    "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,6." +
                     "\nPozor tato hodnota musi byt vetsi nez " + minimalniChranice);
                 
                 //isNumbric, kolem 0:9 a vetsi nez minimalniChranice.
-                double maximalniChranice = int.Parse(Console.ReadLine());
+                double maximalniChranice = double.Parse(Console.ReadLine());
 
                 
 
