@@ -14,10 +14,10 @@ namespace lesson_1
             /*
              
             BassCoin je moje virtualni kripto mena.
-            1 bassCoinu = <0.1:0.9> dollaru.
+            1 bassCoin = <0.1:0.9> dollar.
 
-            Formule Kvadratické Mapování Xn+1 = R*Xn *(1 - X n) je velmi dobra formule pro vytvaření chaotického grafu.
-            logistic map. pokud R bude kolem 3.75 je možny dostat rondomny čisla.
+            Formule logistickeho mapování Xn+1 = R*Xn *(1 - X n), je velmi dobra formule pro vytvaření chaotického grafu.
+            Logistic map. pokud R bude kolem 3.75, je možny dostat rondomny čisla.
             */
             
 
@@ -33,13 +33,13 @@ namespace lesson_1
             {
                 Console.WriteLine("\nDobře.\n Kolik dollaru chcete investovat?");
 
-                mamDolaru = onlyNumberic(Console.ReadLine()); 
+                mamDolaru = interval(onlyNumberic(Console.ReadLine()),0,100000000); 
                
                 Console.WriteLine("\nNa učtu mate {0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
                     "\nZa kolik dollaru ma kupovat robot basscoin při snižení cene. " +
-                    "\nPozor tato častka musi byt menši než častka co mate na učtu", mamDolaru, mojeBassCoin);
+                    "\nPozor tato častka musi byt menši než častka co mate na učtu ({0}).", mamDolaru, mojeBassCoin);
                 
-                double investicniDollar = onlyNumberic(Console.ReadLine());
+                double investicniDollar = interval(onlyNumberic(Console.ReadLine()),0,mamDolaru);
 
                 Console.WriteLine("\nUvedte procenta kolik basscoin musi prodat robot při zvýšené cene." +
                     "\n Pozor tato hodnota musi byt (0:1). Doporučujeme 0,2. ");
@@ -47,24 +47,16 @@ namespace lesson_1
                 double procent = interval(onlyNumberic(Console.ReadLine()),0,1);
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
-                    "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,4.");
+                    "\nHodnota musi byt (0:7). Doporučujeme uvest kolem 0,4.");
 
-                double minimalniChranice = interval(onlyNumberic(Console.ReadLine()),0,9);
+                double minimalniChranice = interval(onlyNumberic(Console.ReadLine()),0,7);
                 
-                Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
-                    "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,6." +
-                    "\nPozor tato hodnota musi byt vetsi nez " + minimalniChranice);
+                Console.WriteLine("\nUvedte chranice, kdy robot ma prodavat basscoin. " +
+                    "\nHodnota musi byt ({0}:9). Doporučujeme uvest kolem 0,6.",minimalniChranice);
                 
-                //vetsi nez minimalniChranice.
-                double maximalniChranice = interval(onlyNumberic(Console.ReadLine()),0,9);
+                double maximalniChranice = interval(onlyNumberic(Console.ReadLine()),minimalniChranice,9);
 
-                
-
-
-
-
-
-                for (int mesic = 0; mesic < 10; mesic++)
+                for (int mesic = 0; mesic < 30; mesic++)
                 {
                     int[] sloupec = new int[akceZaDen];
                     double[] mapaBassCoinu = new double[akceZaDen];
@@ -99,9 +91,9 @@ namespace lesson_1
 
                     }
 
-
                     Console.WriteLine("\n");
 
+                    //tady namalujeme graf
                     for (int row = 10; row > 0; row--)
                     {
                         for (int j = 0; j < akceZaDen; j++)
@@ -111,8 +103,6 @@ namespace lesson_1
                         Console.WriteLine("");
                     }
                     Console.WriteLine("\nNa učtu mate{0} dollaru a {1} BassCoinu. ", mamDolaru, mojeBassCoin);
-
-
                 }
             }else if (chciObchodovat == 'N')
             {
@@ -163,28 +153,26 @@ namespace lesson_1
             Boolean isTrue = true ;
             while (isTrue)
             {
-                if (start >= number)
+                if (number <= start)
                 {
                     Console.WriteLine("Zadejte vetši čislo");
-                    start = onlyNumberic(Console.ReadLine());
+                   number = onlyNumberic(Console.ReadLine());
                     isTrue = true;
-                } else if (number >= finish){
+                } else if (number >= finish  ){ 
                     Console.WriteLine("Zadejte menši čislo");
-                    finish = onlyNumberic(Console.ReadLine());
+                    number = onlyNumberic(Console.ReadLine());
                     isTrue = true;
-                }
-                else if (number > start && number < finish)
+                }else if (number > start && number < finish)
                 {
                     isTrue = false;
+                    Console.WriteLine("\nPrijato!");
                     return number;
+
                 }
             }
             return number;
         }
 
-
-
     }
-
 
 }
