@@ -19,7 +19,7 @@ namespace lesson_1
             Formule Kvadratické Mapování Xn+1 = R*Xn *(1 - X n) je velmi dobra formule pro vytvaření chaotického grafu.
             logistic map. pokud R bude kolem 3.75 je možny dostat rondomny čisla.
             */
-            //if(iSNumberic("7,7")) Console.WriteLine("true");
+            
 
             double bassKoint_soucastnaCena = 0.5; //X=<0:1>  
             double R = 3.75; //MESICNI KOFICENT
@@ -38,26 +38,25 @@ namespace lesson_1
                 Console.WriteLine("\nNa učtu mate {0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
                     "\nZa kolik dollaru ma kupovat robot basscoin při snižení cene. " +
                     "\nPozor tato častka musi byt menši než častka co mate na učtu", mamDolaru, mojeBassCoin);
-                //isNubric
-                double investicniDollar = double.Parse(Console.ReadLine());
+                
+                double investicniDollar = onlyNumberic(Console.ReadLine());
 
                 Console.WriteLine("\nUvedte procenta kolik basscoin musi prodat robot při zvýšené cene." +
-                    "\n Pozor tato hodnota musi byt (0:1>. Doporučujeme 0,2. ");
+                    "\n Pozor tato hodnota musi byt (0:1). Doporučujeme 0,2. ");
                 
-                double procent = onlyNumberic(Console.ReadLine());
+                double procent = interval(onlyNumberic(Console.ReadLine()),0,1);
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
                     "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,4.");
 
-                //isNumbric a kolem 0:9.
-                double minimalniChranice = onlyNumberic(Console.ReadLine());
-
+                double minimalniChranice = interval(onlyNumberic(Console.ReadLine()),0,9);
+                
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
                     "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,6." +
                     "\nPozor tato hodnota musi byt vetsi nez " + minimalniChranice);
                 
-                //isNumbric, kolem 0:9 a vetsi nez minimalniChranice.
-                double maximalniChranice = double.Parse(Console.ReadLine());
+                //vetsi nez minimalniChranice.
+                double maximalniChranice = interval(onlyNumberic(Console.ReadLine()),0,9);
 
                 
 
@@ -142,7 +141,7 @@ namespace lesson_1
         static double onlyNumberic(String tmp)
         {
             Boolean isTrue = true;
-            double tmpDouble = double.Parse(tmp);
+            double tmpDouble;
             while (isTrue) { 
                 double number;
                 if (double.TryParse(tmp, out number))
@@ -157,20 +156,26 @@ namespace lesson_1
                     tmp = Console.ReadLine();
                 }
             }
-            return tmpDouble;  
+            return tmpDouble = double.Parse(tmp);  
         }
         static double interval(double number, double start, double finish)
         {
             Boolean isTrue = true ;
             while (isTrue)
             {
-                if (number < start)
+                if (start >= number)
                 {
                     Console.WriteLine("Zadejte vetši čislo");
-                } else if (number > finish){
+                    start = onlyNumberic(Console.ReadLine());
+                    isTrue = true;
+                } else if (number >= finish){
                     Console.WriteLine("Zadejte menši čislo");
-                }else if (number > start && number < finish)
+                    finish = onlyNumberic(Console.ReadLine());
+                    isTrue = true;
+                }
+                else if (number > start && number < finish)
                 {
+                    isTrue = false;
                     return number;
                 }
             }
