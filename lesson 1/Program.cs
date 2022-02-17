@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace lesson_1
 {
     internal class Program
-    {   
+    { 
+        
         static void Main(string[] args){
 
             /*
@@ -18,21 +19,22 @@ namespace lesson_1
             Formule Kvadratické Mapování Xn+1 = R*Xn *(1 - X n) je velmi dobra formule pro vytvaření chaotického grafu.
             logistic map. pokud R bude kolem 3.75 je možny dostat rondomny čisla.
             */
-            //isNumbeic
+            //if(iSNumberic("7,7")) Console.WriteLine("true");
+
             double bassKoint_soucastnaCena = 0.5; //X=<0:1>  
             double R = 3.75; //MESICNI KOFICENT
             double mojeBassCoin = 0;
             int akceZaDen = 116;
             Console.WriteLine("Binancia\nAhoj. Chces obchodovat obchodovat s kryptoměnami?\nPokud Ano zmačkni \"A\", pokud ne \"N\"");
             char chciObchodovat = char.ToUpper(Console.ReadKey().KeyChar);
-
+            double mamDolaru = 0;
 
             if (chciObchodovat == 'A')
             {
                 Console.WriteLine("\nDobře.\n Kolik dollaru chcete investovat?");
-                //isNumbric
-                double mamDolaru = double.Parse(Console.ReadLine());
 
+                mamDolaru = onlyNumberic(Console.ReadLine()); 
+               
                 Console.WriteLine("\nNa učtu mate {0} dollaru a {1} BassCoinu. \nPojdme programujme robota. " +
                     "\nZa kolik dollaru ma kupovat robot basscoin při snižení cene. " +
                     "\nPozor tato častka musi byt menši než častka co mate na učtu", mamDolaru, mojeBassCoin);
@@ -42,15 +44,13 @@ namespace lesson_1
                 Console.WriteLine("\nUvedte procenta kolik basscoin musi prodat robot při zvýšené cene." +
                     "\n Pozor tato hodnota musi byt (0:1>. Doporučujeme 0,2. ");
                 
-                double procent = double.Parse(Console.ReadLine());
-
-                //isNubric
+                double procent = onlyNumberic(Console.ReadLine());
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
                     "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,4.");
 
                 //isNumbric a kolem 0:9.
-                double minimalniChranice = double.Parse(Console.ReadLine());
+                double minimalniChranice = onlyNumberic(Console.ReadLine());
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
                     "\nHodnota musi byt (0:9). Doporučujeme uvest kolem 0,6." +
@@ -139,8 +139,47 @@ namespace lesson_1
         {
             return zaBasscoin * s_CenaCoinu;
         }
+        static double onlyNumberic(String tmp)
+        {
+            Boolean isTrue = true;
+            double tmpDouble = double.Parse(tmp);
+            while (isTrue) { 
+                double number;
+                if (double.TryParse(tmp, out number))
+                {
+                    isTrue = false;
+                    return tmpDouble = double.Parse(tmp);
+                }
+                else
+                {
+                    isTrue = true;
+                    Console.WriteLine("Zadejte prosim čiselnou hodnotu");
+                    tmp = Console.ReadLine();
+                }
+            }
+            return tmpDouble;  
+        }
+        static double interval(double number, double start, double finish)
+        {
+            Boolean isTrue = true ;
+            while (isTrue)
+            {
+                if (number < start)
+                {
+                    Console.WriteLine("Zadejte vetši čislo");
+                } else if (number > finish){
+                    Console.WriteLine("Zadejte menši čislo");
+                }else if (number > start && number < finish)
+                {
+                    return number;
+                }
+            }
+            return number;
+        }
+
 
 
     }
+
 
 }
