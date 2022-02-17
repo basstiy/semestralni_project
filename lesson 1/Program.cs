@@ -158,6 +158,7 @@ namespace lesson_1
                     Console.WriteLine("Zadejte vetši čislo");
                    number = onlyNumberic(Console.ReadLine());
                     isTrue = true;
+
                 } else if (number >= finish  ){ 
                     Console.WriteLine("Zadejte menši čislo");
                     number = onlyNumberic(Console.ReadLine());
