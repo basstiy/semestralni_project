@@ -47,12 +47,12 @@ namespace lesson_1
                 double procent = interval(onlyNumberic(Console.ReadLine()),0,1);
 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma kupovat basscoin. " +
-                    "\nHodnota musi byt (0:7). Doporučujeme uvest kolem 0,4.");
+                    "\nHodnota musi byt (0:0,7). Doporučujeme uvest kolem 0,4.");
 
                 double minimalniChranice = interval(onlyNumberic(Console.ReadLine()),0,7);
                 
                 Console.WriteLine("\nUvedte chranice, kdy robot ma prodavat basscoin. " +
-                    "\nHodnota musi byt ({0}:9). Doporučujeme uvest kolem 0,6.",minimalniChranice);
+                    "\nHodnota musi byt ({0}:0,9). Doporučujeme uvest kolem 0,6.",minimalniChranice);
                 
                 double maximalniChranice = interval(onlyNumberic(Console.ReadLine()),minimalniChranice,9);
 
