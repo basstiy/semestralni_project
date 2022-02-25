@@ -25,7 +25,7 @@ namespace lesson_1
             double R = 3.75; //MESICNI KOFICENT
             double mojeBassCoin = 0;
             int akceZaDen = 116;
-            Console.WriteLine("Binancia\nAhoj. Chces obchodovat obchodovat s kryptoměnami?\nPokud Ano zmačkni \"A\", pokud ne \"N\"");
+            Console.WriteLine("Binancia\nAhoj. Chces obchodovat s kryptoměnami?\nPokud Ano zmačkni \"A\", pokud ne \"N\"");
             char chciObchodovat = char.ToUpper(Console.ReadKey().KeyChar);
             double mamDolaru = 0;
 
