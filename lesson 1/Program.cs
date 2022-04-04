@@ -19,6 +19,8 @@ namespace lesson_1
             Formule logistickeho mapování Xn+1 = R*Xn *(1 - X n), je velmi dobra formule pro vytvaření chaotického grafu.
             Logistic map. pokud R bude kolem 3.75, je možny dostat rondomny čisla.
             */
+
+
             
 
             double bassKoint_soucastnaCena = 0.5; //X=<0:1>  
