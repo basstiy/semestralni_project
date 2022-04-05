@@ -152,7 +152,7 @@ namespace lesson_1
             Console.SetCursorPosition(2,4 );
             Console.Write("Actual price is: " + price.Substring(0, 9));
             Console.SetCursorPosition(11, 1);
-            Console.Write(name);
+            Console.Write(name); 
             for (int x=0; x <= 30; x++)
             {
                 for (int y=0;y<=6; y++) { 
