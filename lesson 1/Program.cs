@@ -9,8 +9,9 @@ using Newtonsoft.Json;
 namespace lesson_1
 {
     internal class Program
-    { 
-        
+    {
+
+
         static void Main(string[] args){
             BTC btc = new BTC();
 
@@ -36,7 +37,7 @@ namespace lesson_1
                     drawGraf(x, ref y, isTrue, '.');
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(10);
                 tmpp = superSplit(btc.price.Substring(0, 9));
             }
 
@@ -134,7 +135,7 @@ namespace lesson_1
         {
             //direction true jde nahoru, false jde dolů.
             
-            if (direction)
+            if (direction && x>120)
             { y++; } 
             else if(y > 9) { y--; }
 
@@ -149,7 +150,7 @@ namespace lesson_1
         static void drawSquare(string price, string name)
         {
 
-            Console.SetCursorPosition(2,4 );
+            Console.SetCursorPosition(2,4);
             Console.Write("Actual price is: " + price.Substring(0, 9));
             Console.SetCursorPosition(11, 1);
             Console.Write(name); 
