@@ -14,28 +14,30 @@ namespace lesson_1
         static void Main(string[] args){
             BTC btc = new BTC();
 
-            /*
-             
-            BassCoin je moje virtualni kripto mena.
-            1 bassCoin = <0.1:0.9> dollar.
-
-            Formule logistickeho mapování Xn+1 = R*Xn *(1 - X n), je velmi dobra formule pro vytvaření chaotického grafu.
-            Logistic map. pokud R bude kolem 3.75, je možny dostat rondomny čisla.
-            */
             double tmpp = 0;
             Boolean isTrue;
             int x = 0;
+            int y = 21;
+            int z = 0;
+
             while (true) { 
             updatePrice(ref btc);
             drawSquare(btc.price, btc.symbol);
-               
-            Console.WriteLine(btc.price.Substring(0, 9));
-            if( superSplit(btc.price.Substring(0, 9)) > tmpp) isTrue = true; else isTrue = false;
-            
-         
 
-            drawGraf(x++,isTrue);
-            Thread.Sleep(1000);
+            if (superSplit(btc.price.Substring(0, 9)) > tmpp)
+            { isTrue = true; }
+            else { isTrue = false; }
+
+            if (z == 5) {
+
+                    drawGraf(x++, ref y, isTrue, 'X');
+                    z = 0;
+            } else{z++;
+                    drawGraf(x, ref y, isTrue, '.');
+                }
+
+                Thread.Sleep(1000);
+                tmpp = superSplit(btc.price.Substring(0, 9));
             }
 
 
@@ -128,15 +130,17 @@ namespace lesson_1
                 Console.WriteLine("\nDobře.\nPřeji pekni den");
             }
         }
-        static void drawGraf(int x, Boolean direction)
+        static void drawGraf(int x, ref int y, Boolean direction, char c )
         {
             //direction true jde nahoru, false jde dolů.
-            int y = 7;
-            if (direction == true) y++; else y--;
+            
+            if (direction)
+            { y++; } 
+            else if(y > 9) { y--; }
 
 
             Console.SetCursorPosition(x, y);
-            Console.Write("X");
+            Console.Write(c);
 
 
 
@@ -146,7 +150,7 @@ namespace lesson_1
         {
 
             Console.SetCursorPosition(2,4 );
-            Console.Write("Actualy price is: " + price.Substring(0, 9));
+            Console.Write("Actual price is: " + price.Substring(0, 9));
             Console.SetCursorPosition(11, 1);
             Console.Write(name);
             for (int x=0; x <= 30; x++)
@@ -160,6 +164,8 @@ namespace lesson_1
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
+            Console.WriteLine("Graph:");
         }
         static void updatePrice(ref BTC coin)
         {
