@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace lesson_1
 {
@@ -10,16 +12,35 @@ namespace lesson_1
     { 
         
         static void Main(string[] args){
+            BTC btc = new BTC();
 
-            /*
-             
-            BassCoin je moje virtualni kripto mena.
-            1 bassCoin = <0.1:0.9> dollar.
+            double tmpp = 0;
+            Boolean isTrue;
+            int x = 0;
+            int y = 21;
+            int z = 0;
 
-            Formule logistickeho mapování Xn+1 = R*Xn *(1 - X n), je velmi dobra formule pro vytvaření chaotického grafu.
-            Logistic map. pokud R bude kolem 3.75, je možny dostat rondomny čisla.
-            */
-            
+            while (true) { 
+            updatePrice(ref btc);
+            drawSquare(btc.price, btc.symbol);
+
+            if (superSplit(btc.price.Substring(0, 9)) > tmpp)
+            { isTrue = true; }
+            else { isTrue = false; }
+
+            if (z == 5) {
+
+                    drawGraf(x++, ref y, isTrue, 'X');
+                    z = 0;
+            } else{z++;
+                    drawGraf(x, ref y, isTrue, '.');
+                }
+
+                Thread.Sleep(1000);
+                tmpp = superSplit(btc.price.Substring(0, 9));
+            }
+
+
 
             double bassKoint_soucastnaCena = 0.5; //X=<0:1>  
             double R = 3.75; //MESICNI KOFICENT
@@ -109,7 +130,52 @@ namespace lesson_1
                 Console.WriteLine("\nDobře.\nPřeji pekni den");
             }
         }
+        static void drawGraf(int x, ref int y, Boolean direction, char c )
+        {
+            //direction true jde nahoru, false jde dolů.
+            
+            if (direction)
+            { y++; } 
+            else if(y > 9) { y--; }
+
+
+            Console.SetCursorPosition(x, y);
+            Console.Write(c);
+
+
+
+        }
         
+        static void drawSquare(string price, string name)
+        {
+
+            Console.SetCursorPosition(2,4 );
+            Console.Write("Actual price is: " + price.Substring(0, 9));
+            Console.SetCursorPosition(11, 1);
+            Console.Write(name);
+            for (int x=0; x <= 30; x++)
+            {
+                for (int y=0;y<=6; y++) { 
+                if (x==0 || y ==0 || y==6 || x==30 || y==2)
+                    {
+                        Console.SetCursorPosition(x, y);
+                        Console.Write("#");
+                    }
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Graph:");
+        }
+        static void updatePrice(ref BTC coin)
+        {
+            coin = JsonConvert.DeserializeObject<BTC>(new WebClient().DownloadString("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"));
+        }
+        static double superSplit(String txt)
+        {
+            string [] tmp = txt.Split('.');
+            return onlyNumberic(tmp[0] + ',' + tmp[1]);
+        }
         static void drawMap(int mapa, int row,int sloupec)
         {
             if (sloupec == 0) { Console.Write(row + ":"); }
