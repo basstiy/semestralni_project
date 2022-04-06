@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Net;
 using Newtonsoft.Json;
- 
+
 namespace lesson_1
 {
     internal class Program
@@ -18,7 +18,7 @@ namespace lesson_1
             double tmpp = 0;
             Boolean isTrue;
             int x = 0;
-            int y = 21;
+            int y = 41;
             int z = 0;
 
             while (true) { 
@@ -37,7 +37,7 @@ namespace lesson_1
                     drawGraf(x, ref y, isTrue, '.');
                 }
 
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
                 tmpp = superSplit(btc.price.Substring(0, 9));
             }
 
@@ -135,7 +135,7 @@ namespace lesson_1
         {
             //direction true jde nahoru, false jde dolů.
             
-            if (direction && x>120)
+            if (direction & x < 120)
             { y++; } 
             else if(y > 9) { y--; }
 
